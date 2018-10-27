@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DifableApp</string>
+    <string name="welcome_message">Welcome to Suka-Care</string>
+    <string name="fragment_request_title">Request</string>
+    <string name="alert_success">Success</string>
+    <string name="alert_success_message">The audio was successfully added to My Book</string>
+    <string name="alert_failed">Failed</string>
+    <string name="alert_failed_message">The audio has been added in My Book</string>
+</resources>

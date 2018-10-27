@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_dialog_bg"
+    android:elevation="16dp"
+    android:layout_margin="@dimen/activity_universal_margin">
+
+    <ImageView
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:padding="16dp"
+        android:src="@drawable/ic_alert_failed"
+        android:background="@drawable/img_alert_failed_bg"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/img_failed"
+        android:layout_marginTop="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alert_failed"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/alertNegativeRed"
+        android:layout_below="@id/img_failed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:id="@+id/tv_failed"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alert_failed_message"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@id/tv_failed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="38dp"/>
+
+
+</RelativeLayout>

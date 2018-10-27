@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    
+    <color name="primaryDark">#283849</color>
+    <color name="primary">#2c3e50</color>
+
+    <color name="tabSelected">#c0392b</color>
+    <color name="tabUnselected">#c0c5cb</color>
+
+    <color name="colorAccentBlue">#60b6fa</color>
+    <color name="colorAccentBlueDarker">#4ca2e6</color>
+    <color name="buttonDisable">#b4bbc1</color>
+
+    <color name="alertPositiveGreen">#09bb6e</color>
+    <color name="alertNegativeRed">#ff3333</color>
+
+    
+</resources>

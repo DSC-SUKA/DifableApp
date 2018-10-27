@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/activity_universal_margin">
+
+    <ImageView
+        android:layout_width="148dp"
+        android:layout_height="148dp"
+        tools:src="@drawable/btn_books"
+        android:padding="32dp"
+        android:id="@+id/img_all_book_item"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/img_all_book_item_bg"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_all_book_item"
+        tools:text="Bahasa"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"/>
+
+</RelativeLayout>
