@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".view.MainActivity"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -13,6 +13,7 @@
         style="@style/NoActionBar.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primary"
@@ -20,9 +21,10 @@
             app:popupTheme="@style/NoActionBar.PopupOverlay">
 
             <TextView
+                android:id="@+id/tab_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Request"
+                android:text="@string/request"
                 android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:layout_gravity="center"
@@ -31,9 +33,10 @@
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             style="@style/CustomTabLayout"
             android:background="@color/primary"
             app:tabGravity="fill"
@@ -42,6 +45,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

@@ -6,4 +6,8 @@
     <string name="alert_success_message">The audio was successfully added to My Book</string>
     <string name="alert_failed">Failed</string>
     <string name="alert_failed_message">The audio has been added in My Book</string>
+    <string name="request">Request</string>
+    <string name="my_book">My Book</string>
+    <string name="all_books">All Books</string>
+    <string name="hold_to_record">Hold to record</string>
 </resources>
