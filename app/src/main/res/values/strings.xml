@@ -10,4 +10,13 @@
     <string name="my_book">My Book</string>
     <string name="all_books">All Books</string>
     <string name="hold_to_record">Hold to record</string>
+    <string name="tv_email">Email</string>
+    <string name="desc_app_icon">Application icon</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_login">LOG IN</string>
+    <string name="tv_forgot_password">Forgot your Password? </string>
+    <string name="tv_not_a_member_register_now">Not a member? Register now!</string>
+    <string name="desc_login_button">Login button</string>
+    <string name="tv_sign_up">SIGN UP</string>
+    <string name="tv_reset_pass">RESET PASSWORD</string>
 </resources>

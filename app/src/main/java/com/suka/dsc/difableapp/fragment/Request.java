@@ -1,19 +1,24 @@
 package com.suka.dsc.difableapp.fragment;
 
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.suka.dsc.difableapp.R;
+import com.suka.dsc.difableapp.utils.PermissionManager;
 
 import java.io.IOException;
 
@@ -24,6 +29,8 @@ public class Request extends Fragment {
 
     String setOutputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/request.amr";
     MediaRecorder mediaRecorder = null;
+    private String[] permissionNeeded = {Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private final int REQUEST_CODE_RECORD_ACTIVITY = 111;
 
     public Request() {
         // Required empty public constructor
@@ -35,16 +42,23 @@ public class Request extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.blind_home_request_fragment, container, false);
-        setAudioRecordState();
         final ImageButton recordButton = view.findViewById(R.id.record_button);
 
         recordButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN){
-                    startAudioRecord();
-                }else if (event.getAction() == MotionEvent.ACTION_UP){
-                    stopAudioRecord();
+                if (PermissionManager.hasPermissions(getContext(), permissionNeeded)){
+                    if (event.getAction() == MotionEvent.ACTION_DOWN){
+                        Toast.makeText(getContext(), "Record Started", Toast.LENGTH_SHORT).show();
+                        // setAudioRecordState();
+                        // startAudioRecord();
+                    }else if (event.getAction() == MotionEvent.ACTION_UP){
+                        Toast.makeText(getContext(), "Record Finished", Toast.LENGTH_SHORT).show();
+                        // stopAudioRecord();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "You need permission to use this feature", Toast.LENGTH_SHORT).show();
+                    requestPermission();
                 }
                 return false;
             }
@@ -52,6 +66,29 @@ public class Request extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (!PermissionManager.hasPermissions(getContext(), permissionNeeded)){
+            requestPermission();
+        }
+    }
+
+    private void requestPermission() {
+        PermissionManager.requestPermissions(getActivity(), permissionNeeded, REQUEST_CODE_RECORD_ACTIVITY);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CODE_RECORD_ACTIVITY){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void setAudioRecordState(){

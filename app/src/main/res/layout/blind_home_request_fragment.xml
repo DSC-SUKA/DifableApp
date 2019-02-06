@@ -9,7 +9,7 @@
         android:id="@+id/record_button"
         android:layout_width="270dp"
         android:layout_height="270dp"
-        android:background="@null"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:scaleType="centerInside"
         android:src="@drawable/btn_record"
         android:layout_gravity="center_horizontal|center_vertical"
