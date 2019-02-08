@@ -8,9 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.suka.dsc.difableapp.R;
-import com.suka.dsc.difableapp.view.MainActivity;
+import com.suka.dsc.difableapp.mainactivities.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

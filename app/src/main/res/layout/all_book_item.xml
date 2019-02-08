@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="148dp"
         android:layout_height="148dp"
-        tools:src="@drawable/btn_books"
+        tools:src="@drawable/ic_books_color_1"
         android:padding="32dp"
         android:id="@+id/img_all_book_item"
         android:layout_centerHorizontal="true"
@@ -16,6 +16,7 @@
         android:layout_marginBottom="8dp"/>
 
     <TextView
+        android:id="@+id/tv_allbook_categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/img_all_book_item"

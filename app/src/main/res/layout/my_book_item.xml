@@ -7,6 +7,7 @@
     android:padding="@dimen/activity_universal_margin">
 
     <ImageView
+        android:id="@+id/img_my_book"
         android:layout_width="148dp"
         android:layout_height="148dp"
         tools:src="@drawable/btn_books"

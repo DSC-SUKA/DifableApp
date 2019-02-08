@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.view;
+package com.suka.dsc.difableapp.mainactivities;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.adapter.ViewPagerAdapter;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
