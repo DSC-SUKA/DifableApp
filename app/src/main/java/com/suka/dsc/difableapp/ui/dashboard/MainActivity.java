@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.mainactivities;
+package com.suka.dsc.difableapp.ui.dashboard;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

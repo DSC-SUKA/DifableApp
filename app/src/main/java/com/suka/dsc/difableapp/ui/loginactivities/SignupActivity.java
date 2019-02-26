@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.loginactivities;
+package com.suka.dsc.difableapp.ui.loginactivities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/space"
     android:paddingRight="@dimen/space"
-    tools:context=".loginactivities.LoginActivity">
+    tools:context=".ui.loginactivities.LoginActivity">
 
     <ImageView
         android:id="@+id/img_logo"

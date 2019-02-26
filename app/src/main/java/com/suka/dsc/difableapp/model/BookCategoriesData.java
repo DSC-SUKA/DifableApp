@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AllbookCategoriesData implements Parcelable {
+public class BookCategoriesData implements Parcelable {
     @SerializedName("idCategory")
     private String id;
 
@@ -39,23 +39,23 @@ public class AllbookCategoriesData implements Parcelable {
         dest.writeString(this.bookCategory);
     }
 
-    public AllbookCategoriesData() {
+    public BookCategoriesData() {
     }
 
-    protected AllbookCategoriesData(Parcel in) {
+    protected BookCategoriesData(Parcel in) {
         this.id = in.readString();
         this.bookCategory = in.readString();
     }
 
-    public static final Parcelable.Creator<AllbookCategoriesData> CREATOR = new Parcelable.Creator<AllbookCategoriesData>() {
+    public static final Parcelable.Creator<BookCategoriesData> CREATOR = new Parcelable.Creator<BookCategoriesData>() {
         @Override
-        public AllbookCategoriesData createFromParcel(Parcel source) {
-            return new AllbookCategoriesData(source);
+        public BookCategoriesData createFromParcel(Parcel source) {
+            return new BookCategoriesData(source);
         }
 
         @Override
-        public AllbookCategoriesData[] newArray(int size) {
-            return new AllbookCategoriesData[size];
+        public BookCategoriesData[] newArray(int size) {
+            return new BookCategoriesData[size];
         }
     };
 }

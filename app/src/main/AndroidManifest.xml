@@ -13,18 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
-        <activity android:name=".allbooksextend.AllbooksExtendActivity"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".loginactivities.SignupActivity" />
-        <activity android:name=".loginactivities.ResetPasswordActivity" />
-        <activity android:name=".loginactivities.LoginActivity">
+        <activity
+            android:name=".ui.allbooksextend2.AllbooksExtend2Activity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".ui.allbooksextend.AllbooksExtendActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.loginactivities.SignupActivity" />
+        <activity android:name=".ui.loginactivities.ResetPasswordActivity" />
+        <activity android:name=".ui.loginactivities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mainactivities.MainActivity" />
+        <activity android:name=".ui.dashboard.MainActivity" />
     </application>
 
 </manifest>

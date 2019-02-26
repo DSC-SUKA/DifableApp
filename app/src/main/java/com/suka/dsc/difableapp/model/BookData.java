@@ -15,6 +15,17 @@ public class BookData implements Parcelable {
     @SerializedName("nameCategory")
     private String categoryName;
 
+    @SerializedName("audioUrl")
+    private String urlAudio;
+
+    public String getUrlAudio() {
+        return urlAudio;
+    }
+
+    public void setUrlAudio(String urlAudio) {
+        this.urlAudio = urlAudio;
+    }
+
     public String getBookTitle() {
         return bookTitle;
     }
@@ -40,6 +51,9 @@ public class BookData implements Parcelable {
     }
 
 
+    public BookData() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -50,18 +64,17 @@ public class BookData implements Parcelable {
         dest.writeString(this.bookTitle);
         dest.writeString(this.categoryId);
         dest.writeString(this.categoryName);
-    }
-
-    public BookData() {
+        dest.writeString(this.urlAudio);
     }
 
     protected BookData(Parcel in) {
         this.bookTitle = in.readString();
         this.categoryId = in.readString();
         this.categoryName = in.readString();
+        this.urlAudio = in.readString();
     }
 
-    public static final Parcelable.Creator<BookData> CREATOR = new Parcelable.Creator<BookData>() {
+    public static final Creator<BookData> CREATOR = new Creator<BookData>() {
         @Override
         public BookData createFromParcel(Parcel source) {
             return new BookData(source);

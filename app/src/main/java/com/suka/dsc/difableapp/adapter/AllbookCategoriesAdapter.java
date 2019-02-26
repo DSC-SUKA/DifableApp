@@ -10,18 +10,18 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.suka.dsc.difableapp.R;
-import com.suka.dsc.difableapp.model.AllbookCategoriesData;
+import com.suka.dsc.difableapp.model.BookCategoriesData;
 
 import java.util.List;
 
 public class AllbookCategoriesAdapter extends RecyclerView.Adapter<AllbookCategoriesAdapter.ViewHolder> {
 
-    private List<AllbookCategoriesData> mAllbookItems;
+    private List<BookCategoriesData> mAllbookItems;
     private OnClickListener mListener;
     private int colorIndex = 8;
     private int drawablePath;
 
-    public AllbookCategoriesAdapter(List<AllbookCategoriesData> allbookItems, OnClickListener listener) {
+    public AllbookCategoriesAdapter(List<BookCategoriesData> allbookItems, OnClickListener listener) {
         this.mAllbookItems = allbookItems;
         this.mListener = listener;
     }
@@ -52,7 +52,7 @@ public class AllbookCategoriesAdapter extends RecyclerView.Adapter<AllbookCatego
             tvAllbookCategory = itemView.findViewById(R.id.tv_allbook_categories);
         }
 
-        public void bind(final AllbookCategoriesData allbookCategoriesData, final OnClickListener mListener) {
+        public void bind(final BookCategoriesData bookCategoriesData, final OnClickListener mListener) {
             if (colorIndex == 0){
                 colorIndex = 8;
             }
@@ -61,12 +61,12 @@ public class AllbookCategoriesAdapter extends RecyclerView.Adapter<AllbookCatego
             setBookImageForIndex(colorIndex);
 
             Glide.with(itemView.getContext()).load(drawablePath).into(imgAllbookCategories);
-            tvAllbookCategory.setText(allbookCategoriesData.getBookCategory());
+            tvAllbookCategory.setText(bookCategoriesData.getBookCategory());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onClick(allbookCategoriesData);
+                    mListener.onClick(bookCategoriesData);
                 }
             });
         }
@@ -84,6 +84,6 @@ public class AllbookCategoriesAdapter extends RecyclerView.Adapter<AllbookCatego
     }
 
     public interface OnClickListener{
-        void onClick(AllbookCategoriesData clickedData);
+        void onClick(BookCategoriesData clickedData);
     }
 }

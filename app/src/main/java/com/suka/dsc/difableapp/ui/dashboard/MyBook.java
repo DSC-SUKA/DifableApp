@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.fragment;
+package com.suka.dsc.difableapp.ui.dashboard;
 
 
 import android.os.Bundle;

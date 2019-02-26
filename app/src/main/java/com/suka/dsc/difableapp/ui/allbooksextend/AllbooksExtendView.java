@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.allbooksextend;
+package com.suka.dsc.difableapp.ui.allbooksextend;
 
 import com.suka.dsc.difableapp.model.BookData;
 

@@ -1,9 +1,9 @@
-package com.suka.dsc.difableapp.allbooks;
+package com.suka.dsc.difableapp.ui.dashboard.allbooks;
 
 import android.util.Log;
 
-import com.suka.dsc.difableapp.model.AllbookCategoriesData;
-import com.suka.dsc.difableapp.model.AllbookCategoriesModel;
+import com.suka.dsc.difableapp.model.BookCategoriesData;
+import com.suka.dsc.difableapp.model.BookCategoriesModel;
 import com.suka.dsc.difableapp.network.ApiInterface;
 
 import java.util.List;
@@ -23,18 +23,18 @@ public class AllbooksPresenter {
 
     public void getAllbooksCategoriesList(){
         mView.showLoading();
-        Call<AllbookCategoriesModel> allbookModelCall = mApiInterface.getAllbookCategories();
-        allbookModelCall.enqueue(new Callback<AllbookCategoriesModel>() {
+        Call<BookCategoriesModel> allbookModelCall = mApiInterface.getAllbookCategories();
+        allbookModelCall.enqueue(new Callback<BookCategoriesModel>() {
             @Override
-            public void onResponse(Call<AllbookCategoriesModel> call, Response<AllbookCategoriesModel> response) {
+            public void onResponse(Call<BookCategoriesModel> call, Response<BookCategoriesModel> response) {
                 Log.d("Retrofit Get", "Book categories request count: " + response.body().getmAllbookItems().size());
-                List<AllbookCategoriesData> allbookCategoriesDataList = response.body().getmAllbookItems();
+                List<BookCategoriesData> bookCategoriesDataList = response.body().getmAllbookItems();
                 mView.hideLoading();
-                mView.showData(allbookCategoriesDataList);
+                mView.showData(bookCategoriesDataList);
             }
 
             @Override
-            public void onFailure(Call<AllbookCategoriesModel> call, Throwable t) {
+            public void onFailure(Call<BookCategoriesModel> call, Throwable t) {
                 Log.e("Retrofit Get", "Failure: " + t.toString());
             }
         });
