@@ -16,6 +16,7 @@
         android:contentDescription="@string/hold_to_record" />
 
     <TextView
+        android:layout_marginBottom="@dimen/activity_universal_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hold_to_record"

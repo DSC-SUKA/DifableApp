@@ -6,71 +6,64 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.suka.dsc.difableapp.R;
-import com.suka.dsc.difableapp.model.BookCategoriesData;
-import com.suka.dsc.difableapp.model.CategoryResponseData;
+import com.suka.dsc.difableapp.model.AudioResponses;
+import com.suka.dsc.difableapp.model.AudioResponsesData;
 
 import java.util.List;
 
-public class AllbookCategoriesAdapter extends RecyclerView.Adapter<AllbookCategoriesAdapter.ViewHolder> {
-
-    private List<CategoryResponseData> mCategories;
+public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.ViewHolder> {
+    private List<AudioResponsesData> mBookData;
     private OnClickListener mListener;
     private int colorIndex = 8;
     private int drawablePath;
 
-    public AllbookCategoriesAdapter(List<CategoryResponseData> categories, OnClickListener listener) {
-        this.mCategories = categories;
-        this.mListener = listener;
+    public MyBookAdapter(List<AudioResponsesData> mBookData, OnClickListener mListener) {
+        this.mBookData = mBookData;
+        this.mListener = mListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_book_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_book_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(mCategories.get(position), mListener);
+        holder.bind(mBookData.get(position), mListener);
     }
 
     @Override
     public int getItemCount() {
-        if (mCategories == null)
-            return 0;
-        else
-            return mCategories.size();
+        return mBookData.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imgAllbookCategories;
-        private TextView tvAllbookCategory;
+        private ImageView imgMyBook;
         public ViewHolder(View itemView) {
             super(itemView);
-            imgAllbookCategories = itemView.findViewById(R.id.img_all_book_item);
-            tvAllbookCategory = itemView.findViewById(R.id.tv_allbook_categories);
+            imgMyBook = itemView.findViewById(R.id.img_my_book);
         }
 
-        public void bind(final CategoryResponseData category, final OnClickListener mListener) {
+        public void bind(final AudioResponsesData responseData, final OnClickListener mListener) {
             if (colorIndex == 0){
                 colorIndex = 8;
             }
 
-            colorIndex = colorIndex - 1;
+            colorIndex = colorIndex -1;
             setBookImageForIndex(colorIndex);
 
-            Glide.with(itemView.getContext()).load(drawablePath).into(imgAllbookCategories);
-            tvAllbookCategory.setText(category.getCategory());
+            Glide.with(itemView.getContext()).load(drawablePath).into(imgMyBook);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onClick(category);
+                    mListener.onClick(responseData);
                 }
             });
         }
@@ -87,7 +80,7 @@ public class AllbookCategoriesAdapter extends RecyclerView.Adapter<AllbookCatego
         }
     }
 
-    public interface OnClickListener{
-        void onClick(CategoryResponseData clickedData);
+    public interface OnClickListener {
+        void onClick(AudioResponsesData clickedData);
     }
 }

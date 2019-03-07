@@ -2,10 +2,14 @@ package com.suka.dsc.difableapp.ui.dashboard.allbooks;
 
 import android.util.Log;
 
+import com.suka.dsc.difableapp.model.AudioResponses;
+import com.suka.dsc.difableapp.model.AudioResponsesData;
 import com.suka.dsc.difableapp.model.BookCategoriesData;
 import com.suka.dsc.difableapp.model.BookCategoriesModel;
-import com.suka.dsc.difableapp.network.ApiInterface;
+import com.suka.dsc.difableapp.model.CategoryResponses;
+import com.suka.dsc.difableapp.service.ApiInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,20 +25,20 @@ public class AllbooksPresenter {
         this.mApiInterface = apiInterface;
     }
 
-    public void getAllbooksCategoriesList(){
+    public void getCategoriesList(){
         mView.showLoading();
-        Call<BookCategoriesModel> allbookModelCall = mApiInterface.getAllbookCategories();
-        allbookModelCall.enqueue(new Callback<BookCategoriesModel>() {
+        Call<CategoryResponses> allbookModelCall = mApiInterface.getAllCategories();
+        allbookModelCall.enqueue(new Callback<CategoryResponses>() {
             @Override
-            public void onResponse(Call<BookCategoriesModel> call, Response<BookCategoriesModel> response) {
-                Log.d("Retrofit Get", "Book categories request count: " + response.body().getmAllbookItems().size());
-                List<BookCategoriesData> bookCategoriesDataList = response.body().getmAllbookItems();
+            public void onResponse(Call<CategoryResponses> call, Response<CategoryResponses> response) {
+                Log.d("Retrofit Get", "categories count " + response.body().getData().size());
                 mView.hideLoading();
-                mView.showData(bookCategoriesDataList);
+                mView.showData(response.body());
+
             }
 
             @Override
-            public void onFailure(Call<BookCategoriesModel> call, Throwable t) {
+            public void onFailure(Call<CategoryResponses> call, Throwable t) {
                 Log.e("Retrofit Get", "Failure: " + t.toString());
             }
         });

@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.network;
+package com.suka.dsc.difableapp.service;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

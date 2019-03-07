@@ -9,13 +9,14 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.suka.dsc.difableapp.R;
+import com.suka.dsc.difableapp.model.AudioResponsesData;
 import com.suka.dsc.difableapp.model.BookData;
 
 import java.io.IOException;
 
 public class AllbooksExtend2Activity extends AppCompatActivity {
     private ImageButton btnPlay;
-    private BookData bookData;
+    private AudioResponsesData bookData;
     private MediaPlayer mp;
     private boolean isPaused = false;
 
@@ -43,11 +44,11 @@ public class AllbooksExtend2Activity extends AppCompatActivity {
                 else if (isPaused) {
                     mp.start();
                     isPaused = false;
-                } else playMediaFromUrl(bookData.getUrlAudio());
+                } else playMediaFromUrl(bookData.getAudio_url());
             }
         });
 
-        getSupportActionBar().setTitle(bookData.getBookTitle());
+        getSupportActionBar().setTitle(bookData.getDocid());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

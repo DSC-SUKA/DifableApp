@@ -9,18 +9,19 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.suka.dsc.difableapp.R;
+import com.suka.dsc.difableapp.model.AudioResponsesData;
 import com.suka.dsc.difableapp.model.BookData;
 
 import java.util.List;
 
 public class AllbooksExtendAdapter extends RecyclerView.Adapter<AllbooksExtendAdapter.ViewHolder> {
 
-    private List<BookData> mBookData;
+    private List<AudioResponsesData> mBookData;
     private OnClickListener mListener;
     private int colorIndex = 8;
     private int drawablePath;
 
-    public AllbooksExtendAdapter(List<BookData> bookData, OnClickListener listener) {
+    public AllbooksExtendAdapter(List<AudioResponsesData> bookData, OnClickListener listener) {
         this.mBookData = bookData;
         this.mListener = listener;
     }
@@ -49,7 +50,7 @@ public class AllbooksExtendAdapter extends RecyclerView.Adapter<AllbooksExtendAd
             imgAllbook = itemView.findViewById(R.id.img_my_book);
         }
 
-        public void bind(final BookData bookData, final OnClickListener mListener) {
+        public void bind(final AudioResponsesData bookData, final OnClickListener mListener) {
             if (colorIndex == 0){
                 colorIndex = 8;
             }
@@ -80,6 +81,6 @@ public class AllbooksExtendAdapter extends RecyclerView.Adapter<AllbooksExtendAd
     }
 
     public interface OnClickListener{
-        void onClick(BookData clickedData);
+        void onClick(AudioResponsesData clickedData);
     }
 }

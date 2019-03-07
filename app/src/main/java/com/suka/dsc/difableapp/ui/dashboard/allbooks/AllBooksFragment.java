@@ -15,10 +15,12 @@ import android.widget.ProgressBar;
 
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.adapter.AllbookCategoriesAdapter;
+import com.suka.dsc.difableapp.model.CategoryResponseData;
+import com.suka.dsc.difableapp.model.CategoryResponses;
 import com.suka.dsc.difableapp.ui.allbooksextend.AllbooksExtendActivity;
 import com.suka.dsc.difableapp.model.BookCategoriesData;
-import com.suka.dsc.difableapp.network.ApiClient;
-import com.suka.dsc.difableapp.network.ApiInterface;
+import com.suka.dsc.difableapp.service.ApiClient;
+import com.suka.dsc.difableapp.service.ApiInterface;
 
 import java.util.List;
 
@@ -63,15 +65,15 @@ public class AllBooksFragment extends Fragment implements AllbooksView {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mPresenter = new AllbooksPresenter(this, apiInterface);
-        mPresenter.getAllbooksCategoriesList();
+        mPresenter.getCategoriesList();
 
     }
 
     @Override
-    public void showData(final List<BookCategoriesData> data) {
-        mAdapter = new AllbookCategoriesAdapter(data, new AllbookCategoriesAdapter.OnClickListener() {
+    public void showData(final CategoryResponses data) {
+        mAdapter = new AllbookCategoriesAdapter(data.getData(), new AllbookCategoriesAdapter.OnClickListener() {
             @Override
-            public void onClick(BookCategoriesData clickedData) {
+            public void onClick(CategoryResponseData clickedData) {
                 Intent intent = new Intent(getActivity(), AllbooksExtendActivity.class);
                 intent.putExtra("categories_data", clickedData);
                 startActivity(intent);

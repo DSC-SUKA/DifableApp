@@ -2,9 +2,10 @@ package com.suka.dsc.difableapp.ui.allbooksextend;
 
 import android.util.Log;
 
+import com.suka.dsc.difableapp.model.AudioResponses;
 import com.suka.dsc.difableapp.model.BookData;
 import com.suka.dsc.difableapp.model.BookModel;
-import com.suka.dsc.difableapp.network.ApiInterface;
+import com.suka.dsc.difableapp.service.ApiInterface;
 
 import java.util.List;
 
@@ -21,21 +22,20 @@ public class AllbooksExtendPresenter {
         this.mApiInterface = apiInterface;
     }
 
-    public void getAllbooks(String idCategory){
+    public void getAllbooks(String category){
         mView.showLoading();
-        Call<BookModel> bookModelCall = mApiInterface.getAllbook(idCategory);
-        bookModelCall.enqueue(new Callback<BookModel>() {
+        Call<AudioResponses> bookModelCall = mApiInterface.getAllbooksByCat(category);
+        bookModelCall.enqueue(new Callback<AudioResponses>() {
             @Override
-            public void onResponse(Call<BookModel> call, Response<BookModel> response) {
-                Log.d("Retrofit Get", "Book categories request count: " + response.body().getmBookData().size());
-                List<BookData> bookDataList = response.body().getmBookData();
+            public void onResponse(Call<AudioResponses> call, Response<AudioResponses> response) {
+                Log.d("Retrofit Get", "Book request count: " + response.body().getData().size());
                 mView.hideLoading();
-                mView.showData(bookDataList);
+                mView.showData(response.body());
 
             }
 
             @Override
-            public void onFailure(Call<BookModel> call, Throwable t) {
+            public void onFailure(Call<AudioResponses> call, Throwable t) {
                 Log.e("Retrofit Get", "Failure: " + t.toString());
             }
         });

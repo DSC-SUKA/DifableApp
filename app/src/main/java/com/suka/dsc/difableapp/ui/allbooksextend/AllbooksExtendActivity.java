@@ -11,11 +11,14 @@ import android.widget.ProgressBar;
 
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.adapter.AllbooksExtendAdapter;
+import com.suka.dsc.difableapp.model.AudioResponses;
+import com.suka.dsc.difableapp.model.AudioResponsesData;
+import com.suka.dsc.difableapp.model.CategoryResponseData;
 import com.suka.dsc.difableapp.ui.allbooksextend2.AllbooksExtend2Activity;
 import com.suka.dsc.difableapp.model.BookCategoriesData;
 import com.suka.dsc.difableapp.model.BookData;
-import com.suka.dsc.difableapp.network.ApiClient;
-import com.suka.dsc.difableapp.network.ApiInterface;
+import com.suka.dsc.difableapp.service.ApiClient;
+import com.suka.dsc.difableapp.service.ApiInterface;
 
 import java.util.List;
 
@@ -25,7 +28,7 @@ public class AllbooksExtendActivity extends AppCompatActivity implements Allbook
     private AllbooksExtendAdapter mAdapter;
     private AllbooksExtendPresenter mPresenter;
     private ApiInterface mApiInterface;
-    private BookCategoriesData bookCategoriesData;
+    private CategoryResponseData bookCategoriesData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,7 @@ public class AllbooksExtendActivity extends AppCompatActivity implements Allbook
 
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
         mPresenter = new AllbooksExtendPresenter(this, mApiInterface);
-        mPresenter.getAllbooks(bookCategoriesData.getId());
+        mPresenter.getAllbooks(bookCategoriesData.getCategory());
 
     }
 
@@ -50,14 +53,14 @@ public class AllbooksExtendActivity extends AppCompatActivity implements Allbook
         pbAllbookExtend.setVisibility(View.INVISIBLE);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(bookCategoriesData.getBookCategory());
+        getSupportActionBar().setTitle(bookCategoriesData.getCategory());
     }
 
     @Override
-    public void showData(final List<BookData> data) {
-        mAdapter = new AllbooksExtendAdapter(data, new AllbooksExtendAdapter.OnClickListener() {
+    public void showData(final AudioResponses data) {
+        mAdapter = new AllbooksExtendAdapter(data.getData(), new AllbooksExtendAdapter.OnClickListener() {
             @Override
-            public void onClick(BookData clickedData) {
+            public void onClick(AudioResponsesData clickedData) {
                 Intent intent = new Intent(AllbooksExtendActivity.this, AllbooksExtend2Activity.class);
                 intent.putExtra("book_data", clickedData);
                 startActivity(intent);

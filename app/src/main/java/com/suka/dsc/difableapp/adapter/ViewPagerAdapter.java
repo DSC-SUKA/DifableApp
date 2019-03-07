@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.suka.dsc.difableapp.ui.dashboard.allbooks.AllBooksFragment;
-import com.suka.dsc.difableapp.ui.dashboard.MyBook;
+import com.suka.dsc.difableapp.ui.dashboard.mybook.MyBookFragment;
 import com.suka.dsc.difableapp.ui.dashboard.Request;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -22,7 +22,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 fragment = new Request();
                 break;
             case 1 :
-                fragment = new MyBook();
+                fragment = new MyBookFragment();
                 break;
             case 2 :
                 fragment = new AllBooksFragment();
