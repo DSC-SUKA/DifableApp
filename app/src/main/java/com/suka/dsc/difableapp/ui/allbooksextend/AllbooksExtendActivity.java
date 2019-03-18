@@ -11,16 +11,12 @@ import android.widget.ProgressBar;
 
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.adapter.AllbooksExtendAdapter;
-import com.suka.dsc.difableapp.model.AudioResponses;
+import com.suka.dsc.difableapp.model.ResponseAudio;
 import com.suka.dsc.difableapp.model.AudioResponsesData;
 import com.suka.dsc.difableapp.model.CategoryResponseData;
 import com.suka.dsc.difableapp.ui.allbooksextend2.AllbooksExtend2Activity;
-import com.suka.dsc.difableapp.model.BookCategoriesData;
-import com.suka.dsc.difableapp.model.BookData;
 import com.suka.dsc.difableapp.service.ApiClient;
 import com.suka.dsc.difableapp.service.ApiInterface;
-
-import java.util.List;
 
 public class AllbooksExtendActivity extends AppCompatActivity implements AllbooksExtendView{
     private RecyclerView rvAllbookExtend;
@@ -57,7 +53,7 @@ public class AllbooksExtendActivity extends AppCompatActivity implements Allbook
     }
 
     @Override
-    public void showData(final AudioResponses data) {
+    public void showData(final ResponseAudio data) {
         mAdapter = new AllbooksExtendAdapter(data.getData(), new AllbooksExtendAdapter.OnClickListener() {
             @Override
             public void onClick(AudioResponsesData clickedData) {

@@ -2,15 +2,8 @@ package com.suka.dsc.difableapp.ui.dashboard.allbooks;
 
 import android.util.Log;
 
-import com.suka.dsc.difableapp.model.AudioResponses;
-import com.suka.dsc.difableapp.model.AudioResponsesData;
-import com.suka.dsc.difableapp.model.BookCategoriesData;
-import com.suka.dsc.difableapp.model.BookCategoriesModel;
-import com.suka.dsc.difableapp.model.CategoryResponses;
+import com.suka.dsc.difableapp.model.ResponseCategory;
 import com.suka.dsc.difableapp.service.ApiInterface;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,10 +20,10 @@ public class AllbooksPresenter {
 
     public void getCategoriesList(){
         mView.showLoading();
-        Call<CategoryResponses> allbookModelCall = mApiInterface.getAllCategories();
-        allbookModelCall.enqueue(new Callback<CategoryResponses>() {
+        Call<ResponseCategory> allbookModelCall = mApiInterface.getAllCategories();
+        allbookModelCall.enqueue(new Callback<ResponseCategory>() {
             @Override
-            public void onResponse(Call<CategoryResponses> call, Response<CategoryResponses> response) {
+            public void onResponse(Call<ResponseCategory> call, Response<ResponseCategory> response) {
                 Log.d("Retrofit Get", "categories count " + response.body().getData().size());
                 mView.hideLoading();
                 mView.showData(response.body());
@@ -38,7 +31,7 @@ public class AllbooksPresenter {
             }
 
             @Override
-            public void onFailure(Call<CategoryResponses> call, Throwable t) {
+            public void onFailure(Call<ResponseCategory> call, Throwable t) {
                 Log.e("Retrofit Get", "Failure: " + t.toString());
             }
         });

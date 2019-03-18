@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.suka.dsc.difableapp.ui.dashboard.allbooks.AllBooksFragment;
 import com.suka.dsc.difableapp.ui.dashboard.mybook.MyBookFragment;
-import com.suka.dsc.difableapp.ui.dashboard.Request;
+import com.suka.dsc.difableapp.ui.dashboard.request.Request;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 

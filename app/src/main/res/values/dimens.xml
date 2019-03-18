@@ -5,5 +5,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_universal_margin">16dp</dimen>
     <dimen name="space">30dp</dimen>
+    <dimen name="little_space">10dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
 
 </resources>

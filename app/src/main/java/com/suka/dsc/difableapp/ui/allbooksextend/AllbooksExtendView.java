@@ -1,12 +1,9 @@
 package com.suka.dsc.difableapp.ui.allbooksextend;
 
-import com.suka.dsc.difableapp.model.AudioResponses;
-import com.suka.dsc.difableapp.model.BookData;
-
-import java.util.List;
+import com.suka.dsc.difableapp.model.ResponseAudio;
 
 public interface AllbooksExtendView {
-    void showData(AudioResponses data);
+    void showData(ResponseAudio data);
     void showLoading();
     void hideLoading();
 }

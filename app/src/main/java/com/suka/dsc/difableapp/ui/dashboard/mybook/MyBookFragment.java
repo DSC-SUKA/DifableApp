@@ -13,16 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.adapter.MyBookAdapter;
-import com.suka.dsc.difableapp.model.AudioResponses;
 import com.suka.dsc.difableapp.model.AudioResponsesData;
 import com.suka.dsc.difableapp.service.ApiClient;
 import com.suka.dsc.difableapp.service.ApiInterface;
-import com.suka.dsc.difableapp.ui.allbooksextend.AllbooksExtendActivity;
 import com.suka.dsc.difableapp.ui.allbooksextend2.AllbooksExtend2Activity;
 
 import java.util.List;
@@ -36,9 +32,8 @@ public class MyBookFragment extends Fragment implements MyBookView {
     private MyBookAdapter mAdapter;
     private MyBookPresenter mPresenter;
     private ApiInterface apiInterface;
-    private String userId = "m84649LxpThxUfnbTiwAwxULgMC2"; //change user id from login;
+    private String userId = "m84649LxpThxUfnbTiwAwxULgMC2"; //get user id from shared preference;
     private Context context;
-
 
 
     public MyBookFragment() {
@@ -56,7 +51,8 @@ public class MyBookFragment extends Fragment implements MyBookView {
         View view = inflater.inflate(R.layout.blind_my_book_fragment, container, false);
 
         rvMyBook = view.findViewById(R.id.rv_my_book);
-        rvMyBook.setLayoutManager(new GridLayoutManager(getContext(), 2));;
+        rvMyBook.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        ;
 
         progressBar = view.findViewById(R.id.progressbar_mybook);
         progressBar.setVisibility(View.INVISIBLE);
@@ -80,10 +76,10 @@ public class MyBookFragment extends Fragment implements MyBookView {
         mAdapter = new MyBookAdapter(data, new MyBookAdapter.OnClickListener() {
             @Override
             public void onClick(AudioResponsesData clickedData) {
-                //Intent intent = new Intent(getActivity(), AllbooksExtend2Activity.class);
-               // intent.putExtra("book_data", clickedData);
-                //startActivity(intent);
-                Toast.makeText(context, "Clicked on" + clickedData.getUser_name(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), AllbooksExtend2Activity.class);
+                intent.putExtra("book_data", clickedData);
+                startActivity(intent);
+                //Toast.makeText(context, "Clicked on " + clickedData.getDocid(), Toast.LENGTH_SHORT).show();
             }
         });
         rvMyBook.setAdapter(mAdapter);

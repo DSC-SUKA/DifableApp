@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.ui.dashboard;
+package com.suka.dsc.difableapp.ui.dashboard.request;
 
 
 import android.Manifest;
@@ -57,7 +57,7 @@ public class Request extends Fragment {
                         // stopAudioRecord();
                     }
                 } else {
-                    Toast.makeText(getContext(), "You need permission to use this feature", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.toast_need_permission, Toast.LENGTH_SHORT).show();
                     requestPermission();
                 }
                 return false;
@@ -84,9 +84,9 @@ public class Request extends Fragment {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_CODE_RECORD_ACTIVITY){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.toast_permission_granted, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.toast_permission_denied, Toast.LENGTH_SHORT).show();
             }
         }
     }

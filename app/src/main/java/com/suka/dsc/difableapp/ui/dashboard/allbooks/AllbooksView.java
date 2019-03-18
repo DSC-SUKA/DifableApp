@@ -1,12 +1,9 @@
 package com.suka.dsc.difableapp.ui.dashboard.allbooks;
 
-import com.suka.dsc.difableapp.model.BookCategoriesData;
-import com.suka.dsc.difableapp.model.CategoryResponses;
-
-import java.util.List;
+import com.suka.dsc.difableapp.model.ResponseCategory;
 
 public interface AllbooksView {
-    void showData(CategoryResponses data);
+    void showData(ResponseCategory data);
     void showLoading();
     void hideLoading();
 }

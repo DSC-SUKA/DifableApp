@@ -2,16 +2,13 @@ package com.suka.dsc.difableapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class AudioResponses {
+public class ResponseSignup {
     @SerializedName("status")
     private boolean status;
     @SerializedName("message")
     private String message;
     @SerializedName("data")
-    private List<AudioResponsesData> data = new ArrayList<>();
+    private UserData userData;
 
     public boolean getStatus() {
         return status;
@@ -21,8 +18,7 @@ public class AudioResponses {
         return message;
     }
 
-    public List<AudioResponsesData> getData() {
-        return data;
+    public UserData getUserData() {
+        return userData;
     }
-
 }

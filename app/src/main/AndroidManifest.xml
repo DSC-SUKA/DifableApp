@@ -12,16 +12,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".ui.allbooksextend2.AllbooksExtend2Activity"
             android:theme="@style/AppTheme"/>
         <activity
             android:name=".ui.allbooksextend.AllbooksExtendActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.loginactivities.SignupActivity" />
-        <activity android:name=".ui.loginactivities.ResetPasswordActivity" />
-        <activity android:name=".ui.loginactivities.LoginActivity">
+        <activity android:name=".ui.authentication.register.SignupActivity" />
+        <activity android:name=".ui.authentication.ResetPasswordActivity" />
+        <activity android:name=".ui.authentication.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

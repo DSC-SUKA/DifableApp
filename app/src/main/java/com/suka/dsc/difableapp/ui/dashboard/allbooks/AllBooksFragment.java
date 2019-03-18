@@ -16,13 +16,10 @@ import android.widget.ProgressBar;
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.adapter.AllbookCategoriesAdapter;
 import com.suka.dsc.difableapp.model.CategoryResponseData;
-import com.suka.dsc.difableapp.model.CategoryResponses;
+import com.suka.dsc.difableapp.model.ResponseCategory;
 import com.suka.dsc.difableapp.ui.allbooksextend.AllbooksExtendActivity;
-import com.suka.dsc.difableapp.model.BookCategoriesData;
 import com.suka.dsc.difableapp.service.ApiClient;
 import com.suka.dsc.difableapp.service.ApiInterface;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +67,7 @@ public class AllBooksFragment extends Fragment implements AllbooksView {
     }
 
     @Override
-    public void showData(final CategoryResponses data) {
+    public void showData(final ResponseCategory data) {
         mAdapter = new AllbookCategoriesAdapter(data.getData(), new AllbookCategoriesAdapter.OnClickListener() {
             @Override
             public void onClick(CategoryResponseData clickedData) {

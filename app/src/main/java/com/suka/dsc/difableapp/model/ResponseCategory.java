@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryResponses {
+public class ResponseCategory {
     @SerializedName("status")
     private boolean status;
     @SerializedName("message")

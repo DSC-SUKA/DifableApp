@@ -1,13 +1,12 @@
 package com.suka.dsc.difableapp.service;
 
-import com.suka.dsc.difableapp.model.AudioResponses;
-import com.suka.dsc.difableapp.model.BookCategoriesModel;
-import com.suka.dsc.difableapp.model.BookModel;
-import com.suka.dsc.difableapp.model.CategoryResponses;
-import com.suka.dsc.difableapp.model.LoginResponse;
+import com.suka.dsc.difableapp.model.ResponseAudio;
+import com.suka.dsc.difableapp.model.ResponseCategory;
+import com.suka.dsc.difableapp.model.ResponseLogin;
 import com.suka.dsc.difableapp.model.ReqUploadResponse;
-import com.suka.dsc.difableapp.model.SignupResponse;
-import com.suka.dsc.difableapp.model.UploadImage;
+import com.suka.dsc.difableapp.model.ResponseSignup;
+import com.suka.dsc.difableapp.model.ResponseUserData;
+import com.suka.dsc.difableapp.model.ResponseImageUpload;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -29,24 +28,27 @@ public interface ApiInterface {
     //Call<BookModel> getAllbook(@Query("id") String idCategory);
 
     @GET("response/cat")
-    Call<CategoryResponses> getAllCategories();
+    Call<ResponseCategory> getAllCategories();
 
     @GET("response/cat/detail")
-    Call<AudioResponses> getAllbooksByCat(@Query("cat") String category);
+    Call<ResponseAudio> getAllbooksByCat(@Query("cat") String category);
 
     @GET("response/dif/{uid}")
-    Call<AudioResponses> getMyBook(@Path("uid") String userDifId);
+    Call<ResponseAudio> getMyBook(@Path("uid") String userDifId);
+
+    @GET("user/{uid}")
+    Call<ResponseUserData> getUserData(@Path("uid") String userId);
 
     @FormUrlEncoded
     @POST("/login")
-    Call<LoginResponse> login(@Field("email") String email,
+    Call<ResponseLogin> login(@Field("email") String email,
                               @Field("password") String password);
 
     @FormUrlEncoded
     @POST("/createuser")
-    Call<SignupResponse> signup(@Field("email") String email,
+    Call<ResponseSignup> signup(@Field("email") String email,
                                 @Field("password") String password,
-                                @Field("phone_number") String phone_number,
+                                @Field("phone") String phone_number,
                                 @Field("name") String name,
                                 @Field("image_url") String image_url,
                                 @Field("role") String role);
@@ -60,5 +62,5 @@ public interface ApiInterface {
 
     @Multipart
     @POST("image/upload")
-    Call<UploadImage> uploadImage(@Part MultipartBody.Part image);
+    Call<ResponseImageUpload> uploadImage(@Part MultipartBody.Part image);
 }

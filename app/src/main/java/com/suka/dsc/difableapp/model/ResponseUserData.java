@@ -2,23 +2,23 @@ package com.suka.dsc.difableapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UploadImage {
+public class ResponseUserData {
     @SerializedName("status")
-    public boolean status;
-    @SerializedName("data")
-    public String data;
+    private boolean status;
     @SerializedName("message")
-    public String message;
+    private String message;
+    @SerializedName("data")
+    private UserData data;
 
     public boolean getStatus() {
         return status;
     }
 
-    public String getData() {
-        return data;
-    }
-
     public String getMessage() {
         return message;
+    }
+
+    public UserData getData() {
+        return data;
     }
 }

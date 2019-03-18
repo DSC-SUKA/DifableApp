@@ -3,7 +3,7 @@ package com.suka.dsc.difableapp.ui.dashboard.mybook;
 
 import android.util.Log;
 
-import com.suka.dsc.difableapp.model.AudioResponses;
+import com.suka.dsc.difableapp.model.ResponseAudio;
 import com.suka.dsc.difableapp.service.ApiInterface;
 
 import retrofit2.Call;
@@ -21,10 +21,10 @@ public class MyBookPresenter {
 
     public void getMyBookList(String userId){
         mView.showLoading();
-        Call<AudioResponses> audioResponsesCall = mApiInterface.getMyBook(userId);
-        audioResponsesCall.enqueue(new Callback<AudioResponses>() {
+        Call<ResponseAudio> audioResponsesCall = mApiInterface.getMyBook(userId);
+        audioResponsesCall.enqueue(new Callback<ResponseAudio>() {
             @Override
-            public void onResponse(Call<AudioResponses> call, Response<AudioResponses> response) {
+            public void onResponse(Call<ResponseAudio> call, Response<ResponseAudio> response) {
                 Log.d("Retrofit Get", "My book count: " + response.body().getData().size());
                 mView.hideLoading();
                 mView.showData(response.body().getData());
@@ -32,7 +32,7 @@ public class MyBookPresenter {
             }
 
             @Override
-            public void onFailure(Call<AudioResponses> call, Throwable t) {
+            public void onFailure(Call<ResponseAudio> call, Throwable t) {
                 Log.e("Retrofit Get", "Failure: " + t.toString());
             }
         });

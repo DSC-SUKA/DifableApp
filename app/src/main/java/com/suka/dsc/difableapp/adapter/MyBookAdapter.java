@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.suka.dsc.difableapp.R;
-import com.suka.dsc.difableapp.model.AudioResponses;
 import com.suka.dsc.difableapp.model.AudioResponsesData;
 
 import java.util.List;

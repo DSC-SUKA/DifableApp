@@ -4,7 +4,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "https://demo4098679.mockable.io/";
+    //private static final String BASE_URL = "https://demo4098679.mockable.io/";
+    private static final String BASE_URL = "https://suka-care-dev.appspot.com/";
     private static Retrofit retrofit = null;
     public static Retrofit getClient(){
         if (retrofit == null){
