@@ -15,7 +15,9 @@
     <color name="buttonDisable">#b4bbc1</color>
 
     <color name="alertPositiveGreen">#09bb6e</color>
+    <color name="alertPositiveGreenPressed">#81C784</color>
     <color name="alertNegativeRed">#ff3333</color>
+    <color name="alertNegativeRedPressed">#E57373</color>
 
     <color name="book_color_1">#E57373</color>
     <color name="book_color_2">#BA68C8</color>
@@ -25,5 +27,9 @@
     <color name="book_color_6">#AED581</color>
     <color name="book_color_7">#FFF176</color>
     <color name="book_color_8">#FFB74D</color>
+
+    <color name="warningColor">#F1C40F</color>
+
+    <color name="colorTransparent">#43000000</color>
     
 </resources>

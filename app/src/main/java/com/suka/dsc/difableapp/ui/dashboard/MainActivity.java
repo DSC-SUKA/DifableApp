@@ -1,5 +1,7 @@
 package com.suka.dsc.difableapp.ui.dashboard;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,7 +29,7 @@ import com.suka.dsc.difableapp.utils.SessionManager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private NavigationView navMain;
     private DrawerLayout drawer;
     private UserData userData;
@@ -72,11 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logout();
+                showDialog(MainActivity.this);
             }
         });
-
-
 
         ViewPager viewPager = findViewById(R.id.view_pager);
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         tabTitle.setText(getResources().getText(R.string.dashboard_title_request));
                         break;
@@ -126,9 +127,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         finish();
     }
 
+    private void showDialog(Activity activity){
+        final Dialog dialog = new Dialog(activity, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_logout);
+
+        Button btnYes = (Button) dialog.findViewById(R.id.btn_logout_dialog_yes);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                logout();
+            }
+        });
+
+        Button btnNo = (Button) dialog.findViewById(R.id.btn_logout_dialog_no);
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();

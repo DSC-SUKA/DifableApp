@@ -3,7 +3,7 @@ package com.suka.dsc.difableapp.service;
 import com.suka.dsc.difableapp.model.ResponseAudio;
 import com.suka.dsc.difableapp.model.ResponseCategory;
 import com.suka.dsc.difableapp.model.ResponseLogin;
-import com.suka.dsc.difableapp.model.ReqUploadResponse;
+import com.suka.dsc.difableapp.model.ResponseAudioRequest;
 import com.suka.dsc.difableapp.model.ResponseSignup;
 import com.suka.dsc.difableapp.model.ResponseUserData;
 import com.suka.dsc.difableapp.model.ResponseImageUpload;
@@ -27,6 +27,7 @@ public interface ApiInterface {
     //@GET("lookup_allbook")
     //Call<BookModel> getAllbook(@Query("id") String idCategory);
 
+    //2 following method not avalaible yet on API;
     @GET("response/cat")
     Call<ResponseCategory> getAllCategories();
 
@@ -55,10 +56,10 @@ public interface ApiInterface {
 
     @Multipart
     @POST("request/upload")
-    Call<ReqUploadResponse> requestUpload(@Part MultipartBody.Part audio,
-                                          @Part ("user_id") RequestBody user_id,
-                                          @Part ("user_image_url") RequestBody user_image_url,
-                                          @Part ("name") RequestBody name);
+    Call<ResponseAudioRequest> requestUpload(@Part MultipartBody.Part audio,
+                                             @Part ("user_id") RequestBody user_id,
+                                             @Part ("user_image_url") RequestBody user_image_url,
+                                             @Part ("name") RequestBody name);
 
     @Multipart
     @POST("image/upload")

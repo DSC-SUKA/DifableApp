@@ -39,6 +39,8 @@
     <string name="toast_permission_granted">Permission granted!</string>
     <string name="toast_permission_denied">Permission denied!</string>
     <string name="toast_need_permission">You need permission to use this feature!</string>
+    <string name="toast_record_started">Record started</string>
+    <string name="toast_record_finished">Record finished</string>
 
     <string name="dashboard_title_request">Request</string>
     <string name="dashboard_title_mybook">My Book</string>

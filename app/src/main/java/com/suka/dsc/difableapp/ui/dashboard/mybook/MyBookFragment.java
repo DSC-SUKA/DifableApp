@@ -17,9 +17,11 @@ import android.widget.ProgressBar;
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.adapter.MyBookAdapter;
 import com.suka.dsc.difableapp.model.AudioResponsesData;
+import com.suka.dsc.difableapp.model.UserData;
 import com.suka.dsc.difableapp.service.ApiClient;
 import com.suka.dsc.difableapp.service.ApiInterface;
 import com.suka.dsc.difableapp.ui.allbooksextend2.AllbooksExtend2Activity;
+import com.suka.dsc.difableapp.utils.SessionManager;
 
 import java.util.List;
 
@@ -32,8 +34,8 @@ public class MyBookFragment extends Fragment implements MyBookView {
     private MyBookAdapter mAdapter;
     private MyBookPresenter mPresenter;
     private ApiInterface apiInterface;
-    private String userId = "m84649LxpThxUfnbTiwAwxULgMC2"; //get user id from shared preference;
-    private Context context;
+    private String userId; //get user id from shared preference;
+    private SessionManager mSessionManager;
 
 
     public MyBookFragment() {
@@ -52,7 +54,6 @@ public class MyBookFragment extends Fragment implements MyBookView {
 
         rvMyBook = view.findViewById(R.id.rv_my_book);
         rvMyBook.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        ;
 
         progressBar = view.findViewById(R.id.progressbar_mybook);
         progressBar.setVisibility(View.INVISIBLE);
@@ -66,9 +67,10 @@ public class MyBookFragment extends Fragment implements MyBookView {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mPresenter = new MyBookPresenter(this, apiInterface);
+        mSessionManager = new SessionManager(getContext());
+        userId = mSessionManager.getUserData().getUserId();
         mPresenter.getMyBookList(userId);
 
-        context = getContext();
     }
 
     @Override

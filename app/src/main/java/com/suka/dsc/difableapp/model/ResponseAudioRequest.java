@@ -2,7 +2,7 @@ package com.suka.dsc.difableapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ReqUploadResponse {
+public class ResponseAudioRequest {
     @SerializedName("status")
     private boolean status;
     @SerializedName("message")

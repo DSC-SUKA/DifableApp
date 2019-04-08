@@ -34,6 +34,7 @@ public class MyBookPresenter {
             @Override
             public void onFailure(Call<ResponseAudio> call, Throwable t) {
                 Log.e("Retrofit Get", "Failure: " + t.toString());
+                mView.hideLoading();
             }
         });
     }
