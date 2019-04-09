@@ -30,6 +30,6 @@
 
     <color name="warningColor">#F1C40F</color>
 
-    <color name="colorTransparent">#43000000</color>
+    <color name="colorDim">#43000000</color>
     
 </resources>

@@ -30,9 +30,8 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SignupActivity extends AppCompatActivity implements SignupView{
+public class SignupActivity extends AppCompatActivity implements SignupView {
     private TextInputLayout inputEmail, inputPassword, inputPhoneNumb, inputName;
-    private Button btnChoosePict, btnUploadImage, btnSignUp;
     private ProgressBar pbSignup;
     private CircleImageView userAvatar;
     private SignupPresenter mPresenter;
@@ -55,9 +54,9 @@ public class SignupActivity extends AppCompatActivity implements SignupView{
         inputPassword = findViewById(R.id.inputPass_SignUp);
         inputPhoneNumb = findViewById(R.id.inputPhone_SignUp);
         inputName = findViewById(R.id.inputName_SignUp);
-        btnChoosePict = findViewById(R.id.btnChoosePict_SignUp);
-        btnUploadImage = findViewById(R.id.btnUploadPict_Signup);
-        btnSignUp = findViewById(R.id.btnSignUp);
+        Button btnChoosePict = findViewById(R.id.btnChoosePict_SignUp);
+        Button btnUploadImage = findViewById(R.id.btnUploadPict_Signup);
+        Button btnSignUp = findViewById(R.id.btnSignUp);
         pbSignup = findViewById(R.id.progressbar_sigunp);
         userAvatar = findViewById(R.id.civ_ava);
 
@@ -67,7 +66,7 @@ public class SignupActivity extends AppCompatActivity implements SignupView{
             @Override
             public void onClick(View view) {
 
-                if (PermissionManager.hasPermissions(SignupActivity.this, permissionNeeded)){
+                if (PermissionManager.hasPermissions(SignupActivity.this, permissionNeeded)) {
                     pickImage();
                 } else {
                     Toast.makeText(SignupActivity.this, R.string.toast_need_permission, Toast.LENGTH_SHORT).show();
@@ -103,8 +102,8 @@ public class SignupActivity extends AppCompatActivity implements SignupView{
         mSessionManager = new SessionManager(this);
     }
 
-    private void checkSession(){
-        if (mSessionManager.isLogin()){
+    private void checkSession() {
+        if (mSessionManager.isLogin()) {
             Intent intent = new Intent(SignupActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -113,24 +112,24 @@ public class SignupActivity extends AppCompatActivity implements SignupView{
         }
     }
 
-    private void uploadImage(){
+    private void uploadImage() {
         if (!imagePath.isEmpty())
             mPresenter.uploadPhoto(imagePath);
     }
 
-    private void signupNow(){
+    private void signupNow() {
         String email = inputEmail.getEditText().getText().toString();
         String password = inputPassword.getEditText().getText().toString();
         String name = inputName.getEditText().getText().toString();
         String phoneNumb = inputPhoneNumb.getEditText().getText().toString();
         String role = "difable";
 
-        if(validateSignUp(email, password, name, phoneNumb)){
+        if (validateSignUp(email, password, name, phoneNumb)) {
             mPresenter.doSignUp(email, password, phoneNumb, name, imageUrl + "?alt=media&token=", role);
         }
     }
 
-    private boolean validateSignUp (String email, String password, String name, String phoneNumb) {
+    private boolean validateSignUp(String email, String password, String name, String phoneNumb) {
         if (email == null || email.trim().length() == 0) {
             Toast.makeText(this, R.string.email_isrequired, Toast.LENGTH_SHORT).show();
             return false;
@@ -176,7 +175,7 @@ public class SignupActivity extends AppCompatActivity implements SignupView{
 
     @Override
     public void onSuccessUploadImage(ResponseImageUpload responseImageUpload) {
-        if (responseImageUpload.getStatus()){
+        if (responseImageUpload.getStatus()) {
             imageUrl = responseImageUpload.getData();
             Toast.makeText(this, R.string.toast_image_uploaded, Toast.LENGTH_SHORT).show();
         }
@@ -190,7 +189,7 @@ public class SignupActivity extends AppCompatActivity implements SignupView{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0 && resultCode == RESULT_OK && data != null){
+        if (requestCode == 0 && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             imagePath = getRealPathFromUri(imageUri);
 
@@ -216,14 +215,14 @@ public class SignupActivity extends AppCompatActivity implements SignupView{
         return result;
     }
 
-    private void requestPermisson(){
+    private void requestPermisson() {
         PermissionManager.requestPermissions(this, permissionNeeded, REQUEST_CODE_SIGNUP_ACTIVITY);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_CODE_SIGNUP_ACTIVITY){
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == REQUEST_CODE_SIGNUP_ACTIVITY) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, R.string.toast_permission_granted, Toast.LENGTH_SHORT).show();
                 pickImage();
             } else {

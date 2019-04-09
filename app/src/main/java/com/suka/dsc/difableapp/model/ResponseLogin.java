@@ -22,5 +22,4 @@ public class ResponseLogin {
     public UserLoginDetail getData() {
         return data;
     }
-
 }

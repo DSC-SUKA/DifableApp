@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -130,8 +131,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void showDialog(Activity activity){
         final Dialog dialog = new Dialog(activity, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_logout);
+
+        RelativeLayout dimBackground = (RelativeLayout) dialog.findViewById(R.id.dim_background_logout);
+        dimBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
 
         Button btnYes = (Button) dialog.findViewById(R.id.btn_logout_dialog_yes);
         btnYes.setOnClickListener(new View.OnClickListener() {

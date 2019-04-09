@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserLoginDetail {
     @SerializedName("uid")
-    public String user_id;
+    private String user_id;
     @SerializedName("role")
-    public String user_role;
+    private String user_role;
 
     public String getUserId() {
         return user_id;

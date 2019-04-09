@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorTransparent"
-    android:gravity="center">
+    android:background="@null">
+
+    <RelativeLayout
+        android:id="@+id/dim_background_send_request"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorDim">
+    </RelativeLayout>
 
     <LinearLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
@@ -38,7 +45,7 @@
             <Button
                 android:id="@+id/btn_send_request_dialog_yes"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
@@ -46,12 +53,12 @@
                 android:text="Yes"
                 android:textAllCaps="false"
                 android:textColor="@color/alertPositiveGreen"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_send_request_dialog_no"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_weight="1"
@@ -59,10 +66,10 @@
                 android:text="No"
                 android:textAllCaps="false"
                 android:textColor="@color/alertNegativeRed"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</FrameLayout>

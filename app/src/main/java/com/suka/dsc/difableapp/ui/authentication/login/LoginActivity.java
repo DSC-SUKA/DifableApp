@@ -1,31 +1,24 @@
 package com.suka.dsc.difableapp.ui.authentication.login;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.model.UserData;
 import com.suka.dsc.difableapp.model.UserLoginDetail;
-import com.suka.dsc.difableapp.service.ApiInterface;
 import com.suka.dsc.difableapp.ui.authentication.register.SignupActivity;
 import com.suka.dsc.difableapp.ui.dashboard.MainActivity;
 import com.suka.dsc.difableapp.utils.SessionManager;
 
-import java.util.Objects;
-
 public class LoginActivity extends AppCompatActivity implements LoginView{
     private TextInputLayout inputEmail, inputPass;
-    private Button btnLogin, btnResetPassword, btnRegister;
     private ProgressBar pbLogin;
     private LoginPresenter mPresenter;
     private SessionManager mSessionManager;
@@ -45,9 +38,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         pbLogin = findViewById(R.id.progressbar_login);
         inputEmail = findViewById(R.id.inputEmail_login);
         inputPass = findViewById(R.id.inputPass_login);
-        btnLogin = findViewById(R.id.btn_login);
-        btnResetPassword = findViewById(R.id.btn_forgotPassword_login);
-        btnRegister = findViewById(R.id.btn_register_login);
+        Button btnLogin = findViewById(R.id.btn_login);
+        Button btnResetPassword = findViewById(R.id.btn_forgotPassword_login);
+        Button btnRegister = findViewById(R.id.btn_register_login);
 
         Glide.with(this)
                 .load(R.drawable.logo)
@@ -78,8 +71,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
             }
         });
-
-
     }
 
     private void initComponent() {
@@ -129,8 +120,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void onSuccessLogin(UserLoginDetail userLoginDetail) {
-        if (userLoginDetail.user_role.equals("difable")){
-            mPresenter.getUserData(userLoginDetail.user_id);
+        if (userLoginDetail.getUserRole().equals("difable")){
+            mPresenter.getUserData(userLoginDetail.getUserId());
         } else {
             Toast.makeText(this, R.string.toast_role_not_match, Toast.LENGTH_SHORT).show();
             this.hideLoading();
@@ -148,5 +139,4 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         mSessionManager.createSession(userData);
         checkSession();
     }
-
 }

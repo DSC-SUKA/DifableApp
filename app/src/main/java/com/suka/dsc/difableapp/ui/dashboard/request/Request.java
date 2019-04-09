@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.suka.dsc.difableapp.R;
@@ -143,7 +144,14 @@ public class Request extends Fragment implements RequestView{
         final Dialog dialog = new Dialog(context, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_send_request);
-        ;
+
+        RelativeLayout dimBackground = (RelativeLayout) dialog.findViewById(R.id.dim_background_send_request);
+        dimBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
 
         Button btnYes = (Button) dialog.findViewById(R.id.btn_send_request_dialog_yes);
         btnYes.setOnClickListener(new View.OnClickListener() {

@@ -1,7 +1,6 @@
 package com.suka.dsc.difableapp.ui.dashboard.mybook;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,9 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.suka.dsc.difableapp.R;
-import com.suka.dsc.difableapp.adapter.MyBookAdapter;
 import com.suka.dsc.difableapp.model.AudioResponsesData;
-import com.suka.dsc.difableapp.model.UserData;
 import com.suka.dsc.difableapp.service.ApiClient;
 import com.suka.dsc.difableapp.service.ApiInterface;
 import com.suka.dsc.difableapp.ui.allbooksextend2.AllbooksExtend2Activity;
@@ -79,7 +76,7 @@ public class MyBookFragment extends Fragment implements MyBookView {
             @Override
             public void onClick(AudioResponsesData clickedData) {
                 Intent intent = new Intent(getActivity(), AllbooksExtend2Activity.class);
-                intent.putExtra("book_data", clickedData);
+                intent.putExtra("book_detail", clickedData);
                 startActivity(intent);
                 //Toast.makeText(context, "Clicked on " + clickedData.getDocid(), Toast.LENGTH_SHORT).show();
             }

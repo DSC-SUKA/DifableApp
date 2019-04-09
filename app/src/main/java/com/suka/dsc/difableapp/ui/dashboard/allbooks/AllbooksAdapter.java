@@ -1,4 +1,4 @@
-package com.suka.dsc.difableapp.adapter;
+package com.suka.dsc.difableapp.ui.dashboard.allbooks;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -6,63 +6,70 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.suka.dsc.difableapp.R;
 import com.suka.dsc.difableapp.model.AudioResponsesData;
+import com.suka.dsc.difableapp.model.CategoryResponseData;
 
 import java.util.List;
 
-public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.ViewHolder> {
-    private List<AudioResponsesData> mBookData;
-    private OnClickListener mListener;
+public class AllbooksAdapter extends RecyclerView.Adapter<AllbooksAdapter.ViewHolder> {
+    private List<AudioResponsesData> mBookList;
+    private AllbooksAdapter.OnClickListener mListener;
     private int colorIndex = 8;
     private int drawablePath;
 
-    public MyBookAdapter(List<AudioResponsesData> mBookData, OnClickListener mListener) {
-        this.mBookData = mBookData;
-        this.mListener = mListener;
+    public AllbooksAdapter(List<AudioResponsesData> bookList, AllbooksAdapter.OnClickListener listener) {
+        this.mBookList = bookList;
+        this.mListener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_book_item, parent, false);
+    public AllbooksAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_book_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(mBookData.get(position), mListener);
+    public void onBindViewHolder(@NonNull AllbooksAdapter.ViewHolder holder, int position) {
+        holder.bind(mBookList.get(position), mListener);
     }
 
     @Override
     public int getItemCount() {
-        return mBookData.size();
+        if (mBookList == null)
+            return 0;
+        else
+            return mBookList.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imgMyBook;
+        private ImageView imgAllbookIcon;
+        private TextView tvAllbooksUsername;
         public ViewHolder(View itemView) {
             super(itemView);
-            imgMyBook = itemView.findViewById(R.id.img_my_book);
+            imgAllbookIcon = itemView.findViewById(R.id.img_all_book_item);
+            tvAllbooksUsername = itemView.findViewById(R.id.tv_allbooks_username);
         }
 
-        public void bind(final AudioResponsesData responseData, final OnClickListener mListener) {
+        public void bind(final AudioResponsesData bookData, final AllbooksAdapter.OnClickListener mListener) {
             if (colorIndex == 0){
                 colorIndex = 8;
             }
 
-            colorIndex = colorIndex -1;
+            colorIndex = colorIndex - 1;
             setBookImageForIndex(colorIndex);
 
-            Glide.with(itemView.getContext()).load(drawablePath).into(imgMyBook);
+            Glide.with(itemView.getContext()).load(drawablePath).into(imgAllbookIcon);
+            tvAllbooksUsername.setText(bookData.getUser_name());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onClick(responseData);
+                    mListener.onClick(bookData);
                 }
             });
         }
@@ -79,7 +86,7 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.ViewHolder
         }
     }
 
-    public interface OnClickListener {
+    public interface OnClickListener{
         void onClick(AudioResponsesData clickedData);
     }
 }

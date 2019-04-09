@@ -36,6 +36,7 @@ public class LoginPresenter  {
 
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                mView.hideLoading();
                 Log.d("Login Failure: ", t.toString());
             }
         });
@@ -52,6 +53,7 @@ public class LoginPresenter  {
 
             @Override
             public void onFailure(Call<ResponseUserData> call, Throwable t) {
+                mView.hideLoading();
                 Log.d("Get User Data Failure: ", t.toString());
             }
         });

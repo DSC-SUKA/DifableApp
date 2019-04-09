@@ -30,9 +30,11 @@ public interface ApiInterface {
     //2 following method not avalaible yet on API;
     @GET("response/cat")
     Call<ResponseCategory> getAllCategories();
-
     @GET("response/cat/detail")
     Call<ResponseAudio> getAllbooksByCat(@Query("cat") String category);
+
+    @GET("response")
+    Call<ResponseAudio> getAllbooks();
 
     @GET("response/dif/{uid}")
     Call<ResponseAudio> getMyBook(@Path("uid") String userDifId);

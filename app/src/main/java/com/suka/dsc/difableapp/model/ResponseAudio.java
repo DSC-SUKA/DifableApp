@@ -11,7 +11,7 @@ public class ResponseAudio {
     @SerializedName("message")
     private String message;
     @SerializedName("data")
-    private List<AudioResponsesData> data = new ArrayList<>();
+    private List<AudioResponsesData> data;
 
     public boolean getStatus() {
         return status;

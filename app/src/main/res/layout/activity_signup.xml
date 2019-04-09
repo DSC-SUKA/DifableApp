@@ -8,7 +8,6 @@
     android:background="@android:color/white"
     android:gravity="center"
     android:orientation="vertical"
-
     tools:context=".ui.authentication.register.SignupActivity">
 
     <RelativeLayout
@@ -147,8 +146,6 @@
 
         </LinearLayout>
 
-
     </RelativeLayout>
-
 
 </ScrollView>

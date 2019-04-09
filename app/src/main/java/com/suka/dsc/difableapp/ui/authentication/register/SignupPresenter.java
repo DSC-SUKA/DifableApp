@@ -3,7 +3,6 @@ package com.suka.dsc.difableapp.ui.authentication.register;
 import android.util.Log;
 
 import com.suka.dsc.difableapp.model.ResponseImageUpload;
-import com.suka.dsc.difableapp.model.ResponseLogin;
 import com.suka.dsc.difableapp.model.ResponseSignup;
 import com.suka.dsc.difableapp.service.ApiClient;
 import com.suka.dsc.difableapp.service.ApiInterface;
@@ -37,12 +36,14 @@ public class SignupPresenter {
             @Override
             public void onResponse(Call<ResponseImageUpload> call, Response<ResponseImageUpload> response) {
                 mView.hideLoading();
-                if (response.body().getStatus()) {
-                    Log.d("Photo Data : ", response.body().getData());
-                    mView.onSuccessUploadImage(response.body());
-                } else {
-                    Log.d("Upload Image Message: ", response.body().getMessage());
-                    mView.onErrorUploadImage(response.body().getMessage());
+                if (response.body() != null){
+                    if (response.body().getStatus()) {
+                        Log.d("Photo Data : ", response.body().getData());
+                        mView.onSuccessUploadImage(response.body());
+                    } else {
+                        Log.d("Upload Image Message: ", response.body().getMessage());
+                        mView.onErrorUploadImage(response.body().getMessage());
+                    }
                 }
             }
 
@@ -62,12 +63,14 @@ public class SignupPresenter {
             @Override
             public void onResponse(Call<ResponseSignup> call, Response<ResponseSignup> response) {
                 mView.hideLoading();
-                if (response.body().getStatus()) {
-                    mView.onSuccessRegister(response.body().getUserData());
-                    Log.d("Registered User ID: ", response.body().getUserData().getUserId());
-                } else {
-                    mView.onErrorRegister(response.body().getMessage());
-                    Log.d("Signup Message", response.body().getMessage());
+                if (response.body() != null){
+                    if (response.body().getStatus()) {
+                        mView.onSuccessRegister(response.body().getUserData());
+                        Log.d("Registered User ID: ", response.body().getUserData().getUserId());
+                    } else {
+                        mView.onErrorRegister(response.body().getMessage());
+                        Log.d("Signup Message", response.body().getMessage());
+                    }
                 }
             }
 
@@ -78,6 +81,5 @@ public class SignupPresenter {
             }
         });
     }
-
 
 }

@@ -24,7 +24,7 @@ public class AllbooksExtend2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        bookData = getIntent().getParcelableExtra("book_data");
+        bookData = getIntent().getParcelableExtra("book_detail");
 
         renderView();
         setMediaPlayer();
@@ -44,11 +44,11 @@ public class AllbooksExtend2Activity extends AppCompatActivity {
                 else if (isPaused) {
                     mp.start();
                     isPaused = false;
-                } else playMediaFromUrl(bookData.getAudio_url());
+                } else playMediaFromUrl(bookData.getAudio_url() + "?alt=media&token=");
             }
         });
 
-        getSupportActionBar().setTitle(bookData.getDocid());
+        getSupportActionBar().setTitle("Book by " + bookData.getUser_name());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
